@@ -1,0 +1,23 @@
+.box {
+	width:	50%;
+	margin:	auto;
+	border: 3px solid green;
+	text-align:	center;
+}
+
+.red-img {
+	height:	100px;
+	margin:	auto;
+	filter:	brightness(0)
+		 saturate(100%)
+		 invert(12%)
+		 sepia(89%)
+		 saturate(7156%)
+		 hue-rotate(2deg)
+		 brightness(109%)
+		 contrast(114%);
+}
+
+.panel-height-helper {
+	overflow:	auto;
+}
