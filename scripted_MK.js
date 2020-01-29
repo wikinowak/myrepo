@@ -14,6 +14,8 @@
 'use strict';
 $.getScript('public/dashboards/test.js');
 $('head').append('<link rel="stylesheet" href="public/dashboards/custom.css" type="text/css" />');
+$('head').append('<script src="public/dashboards/svg.js"></script>');
+
 /*var mod = document.createElement("script")
 mod.type = "module";
 mod.innerHTML = "import {hello} from './myscript2.js'";
@@ -45,6 +47,23 @@ var ARGS;
 dashboard[0] = {
   rows : [],
 };
+
+let clients = [];
+
+clients.push({
+  name  : 'Alior',
+  logo  : 'public/img/svg/alior-bank.svg'
+});
+
+clients.push({
+  name  : 'PeKaO',
+  logo  : 'public/img/svg/bank-pekao.svg'
+});
+
+clients.push({
+  name  : 'Mbank',
+  logo  : 'public/img/svg/mbank.svg'
+});
 
 // Set a title
 dashboard[0].title = 'Scripted dash';
@@ -114,17 +133,16 @@ dashboard[0].links = [
 	      url: "http://127.0.0.1:3000/dashboard/script/scripted.js"
         }
 ]
-function createContent() {
-	let image = "<img src";
-	let html = '<div class="box"> \
+function createContent(client) {
+	let html = '<div class="box1"> \
 			<a href="http://127.0.0.1:3000/dashboard/script/scripted.js"> \
-				<img class="red-img" src="public/img/online.svg"></img> \
+				<img class="logo" src="'+client.logo+'"></img> \
 			</a> \
 		   </div> \
-		   <div class="box"> \
-			<button class="btn btn-primary">a1</button> \
-			<a href="http://127.0.0.1:3000/dashboard/script/scripted.js">a2</a> \
-			<button class="btn btn-primary">a3</button> \
+		   <div class="box2"> \
+			<button class="button1">a1</button> \
+			<button class="button1">a2</button> \
+			<button class="button1">a3</button> \
 		   </div>';
 	return html;
 }
@@ -133,15 +151,15 @@ function panel_tab() {
   var test = [];
   var panel_tab1= [];
 
-  for ( var i=0; i<12; i++) {
+  for ( var i=0; i<clients.length; i++) {
     test.push( {
-      title: "panel" + i,
+      //title: clients[i].name,
       editable: true,
       type: 'text',
-      span: 12,
+      span: 4,
       mode: 'html',
-      height: '80px',
-      content: createContent()
+      height: '200px',
+      content: createContent(clients[i])
         }/*,{
       title: "haha" + i,
       editable: true,
